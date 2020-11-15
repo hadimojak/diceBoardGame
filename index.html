@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiceGame</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="row1">
+      <div id="p2" class="column">
+        <h3>بازیکن دوم</h3>
+        <div class="picBox">
+          <img id="DicePic" src="" class="dicePicture" />
+        </div>
+        <div id="row2">
+          <button class="saveButton">ذخیره</button>
+          <div class="scoreHolder" id="curScore"></div>
+        </div>
+        <div id="row21">
+          <h4 dir="rtl" class="score">امتیاز کل :</h4>
+          <p dir="rtl" class="scorePoint" id="ttlScore"></p>
+        </div>
+        <button class="diceButton" id="diceButton">تاس</button>
+      </div>
+      <div id="p1" class="column">
+        <h3>بازیکن اول</h3>
+        <div class="picBox">
+          <img id="DicePic" src="" class="dicePicture" />
+        </div>
+        <div id="row2">
+          <button class="saveButton">ذخیره</button>
+          <div class="scoreHolder" id="curScore"></div>
+        </div>
+        <div id="row21">
+          <h4 dir="rtl" class="score">امتیاز کل :</h4>
+          <p dir="rtl" class="scorePoint" id="ttlScore"></p>
+        </div>
+        <button class="diceButton" id="diceButton">تاس</button>
+      </div>
+    </div>
+    <button class="reset" onclick="window.location.reload();">reset game</button>
+  </body>
+</html>
