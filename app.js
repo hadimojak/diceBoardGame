@@ -54,6 +54,8 @@ function diceButtonHandler(element) {
   }
 }
 
+function changeTurnBySave() {}
+
 function changeUi(p1, p2, id) {
   console.log(id);
   flag = true;
@@ -90,18 +92,25 @@ function changeUi(p1, p2, id) {
 function savaButtonHandler(element) {
   const pId = element.parentElement.parentElement.id;
   if (pId === "p1") {
+    player1ChangeTurn = true;
+    player2ChangeTurn = false;
     p1Ttl += _p1CurScore;
     p1TtlScore.textContent = p1Ttl;
     p1CurScore.textContent = 0;
     _p1CurScore = 0;
+    changeUi(player1ChangeTurn, player2ChangeTurn, pId);
     if (p1Ttl >= 100) {
       showTheWinner("بازیکن اول");
     }
   } else {
+    player1ChangeTurn = false;
+    player2ChangeTurn = true;
     p2Ttl += _p2CurScore;
     p2TtlScore.textContent = p2Ttl;
     p2CurScore.textContent = 0;
     _p2CurScore = 0;
+    changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+
     if (p2Ttl >= 100) {
       showTheWinner("بازیکن دوم");
     }
