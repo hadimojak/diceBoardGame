@@ -96,9 +96,13 @@ function savaButtonHandler(element) {
     player2ChangeTurn = false;
     p1Ttl += _p1CurScore;
     p1TtlScore.textContent = p1Ttl;
+    if (_p1CurScore === 0) {
+      return;
+    } else {
+      changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+    }
     p1CurScore.textContent = 0;
     _p1CurScore = 0;
-    changeUi(player1ChangeTurn, player2ChangeTurn, pId);
     if (p1Ttl >= 100) {
       showTheWinner("بازیکن اول");
     }
@@ -107,10 +111,13 @@ function savaButtonHandler(element) {
     player2ChangeTurn = true;
     p2Ttl += _p2CurScore;
     p2TtlScore.textContent = p2Ttl;
+    if (_p2CurScore === 0) {
+      return;
+    } else {
+      changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+    }
     p2CurScore.textContent = 0;
     _p2CurScore = 0;
-    changeUi(player1ChangeTurn, player2ChangeTurn, pId);
-
     if (p2Ttl >= 100) {
       showTheWinner("بازیکن دوم");
     }
