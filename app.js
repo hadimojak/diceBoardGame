@@ -21,16 +21,20 @@ window.addEventListener("click", (event) => {
   }
 });
 
+function changeDicePic(roll) {
+  return `/dicePictures/Dice-${roll}-b.svg`;
+}
+
 function diceButtonHandler(element) {
   const pId = element.parentElement.id;
   const roll = parseInt(Math.floor(Math.random() * 6) + 1);
   console.log(pId, roll);
   if (pId === "p1") {
     if (roll === 1) {
-      p1DicePic.src = `/dicePictures/Dice-1-b.svg`;
+      p1DicePic.src = changeDicePic(roll);
       changeUi((player1ChangeTurn = true), (player2ChangeTurn = false), pId);
     } else {
-      p1DicePic.src = `/dicePictures/Dice-${roll}-b.svg`;
+      p1DicePic.src = changeDicePic(roll);
       changeUi((player1ChangeTurn = false), (player2ChangeTurn = true), pId);
       _p1CurScore += roll;
       p1CurScore.textContent = _p1CurScore;
@@ -53,28 +57,27 @@ function changeUi(p1, p2, id) {
   flag = true;
   switch (flag) {
     case p1 && !p2:
-      document.getElementById("p1").querySelectorAll("button")[1].style =
-        "display:none;";
-      document.getElementById("p2").querySelectorAll("button")[1].style =
-        "display:block;";
-      document.getElementById("p1").style.borderColor = "white";
-      document.getElementById("p2").style.borderColor = "red";
+      changeTurn("p1", "p2");
       p1CurScore.textContent = 0;
       _p1CurScore = 0;
       break;
     case p2 && !p1:
-      document.getElementById("p2").querySelectorAll("button")[1].style =
-        "display:none;";
-      document.getElementById("p1").querySelectorAll("button")[1].style =
-        "display:block;";
-      document.getElementById("p2").style.borderColor = "white";
-      document.getElementById("p1").style.borderColor = "red";
+      changeTurn("p2", "p1");
       p2CurScore.textContent = 0;
       _p2CurScore = 0;
       break;
     default:
       break;
   }
+}
+
+function changeTurn(p1, p2) {
+  document.getElementById(p1).querySelectorAll("button")[1].style =
+    "display:none;";
+  document.getElementById(p2).querySelectorAll("button")[1].style =
+    "display:block;";
+  document.getElementById(p1).style.borderColor = "white";
+  document.getElementById(p2).style.borderColor = "red";
 }
 
 function savaButtonHandler(element) {
