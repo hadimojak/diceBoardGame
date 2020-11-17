@@ -28,7 +28,7 @@ function changeDicePic(roll) {
 function diceButtonHandler(element) {
   const pId = element.parentElement.id;
   const roll = parseInt(Math.floor(Math.random() * 6) + 1);
-  console.log(pId, roll);
+  console.log(pId, roll ,'   from diceHandler');
   if (pId === "p1") {
     if (roll === 1) {
       p1DicePic.src = changeDicePic(roll);
@@ -53,7 +53,7 @@ function diceButtonHandler(element) {
 }
 
 function changeUi(p1, p2, id) {
-  console.log(id);
+  console.log(id,'   this is from changeUi');
   flag = true;
   switch (flag) {
     case p1 && !p2:
