@@ -65,6 +65,8 @@ function changeUi(p1, p2, id) {
         "display:none;";
       document.getElementById("p2").querySelectorAll("button")[1].style =
         "display:block;";
+      document.getElementById("p1").style.borderColor = "white";
+      document.getElementById("p2").style.borderColor = "red";
       p1CurScore.textContent = 0;
       _p1CurScore = 0;
       console.log("p1 ride");
@@ -74,6 +76,8 @@ function changeUi(p1, p2, id) {
         "display:none;";
       document.getElementById("p1").querySelectorAll("button")[1].style =
         "display:block;";
+      document.getElementById("p2").style.borderColor = "white";
+      document.getElementById("p1").style.borderColor = "red";
       p2CurScore.textContent = 0;
       _p2CurScore = 0;
       console.log("p2 ride");
