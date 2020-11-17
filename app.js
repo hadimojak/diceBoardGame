@@ -28,33 +28,25 @@ function diceButtonHandler(element) {
   if (pId === "p1") {
     if (roll === 1) {
       p1DicePic.src = `/dicePictures/Dice-1-b.svg`;
-      player1ChangeTurn = true;
-      player2ChangeTurn = false;
-      changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+      changeUi((player1ChangeTurn = true), (player2ChangeTurn = false), pId);
     } else {
       p1DicePic.src = `/dicePictures/Dice-${roll}-b.svg`;
-      document.getElementById("p2").querySelectorAll("button")[1].style =
-        "display:none;";
+      changeUi((player1ChangeTurn = false), (player2ChangeTurn = true), pId);
       _p1CurScore += roll;
       p1CurScore.textContent = _p1CurScore;
     }
   } else if (pId === "p2") {
     if (roll === 1) {
       p2DicePic.src = `/dicePictures/Dice-1-b.svg`;
-      player2ChangeTurn = true;
-      player1ChangeTurn = false;
-      changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+      changeUi((player1ChangeTurn = false), (player2ChangeTurn = true), pId);
     } else {
       p2DicePic.src = `/dicePictures/Dice-${roll}-b.svg`;
-      document.getElementById("p1").querySelectorAll("button")[1].style =
-        "display:none;";
+      changeUi((player1ChangeTurn = true), (player2ChangeTurn = false), pId);
       _p2CurScore += roll;
       p2CurScore.textContent = _p2CurScore;
     }
   }
 }
-
-function changeTurnBySave() {}
 
 function changeUi(p1, p2, id) {
   console.log(id);
@@ -69,7 +61,6 @@ function changeUi(p1, p2, id) {
       document.getElementById("p2").style.borderColor = "red";
       p1CurScore.textContent = 0;
       _p1CurScore = 0;
-      console.log("p1 ride");
       break;
     case p2 && !p1:
       document.getElementById("p2").querySelectorAll("button")[1].style =
@@ -80,13 +71,6 @@ function changeUi(p1, p2, id) {
       document.getElementById("p1").style.borderColor = "red";
       p2CurScore.textContent = 0;
       _p2CurScore = 0;
-      console.log("p2 ride");
-      break;
-    case p1 && p2:
-      console.log("code broke");
-      break;
-    case !p1 && !p2:
-      console.log("code broke");
       break;
     default:
       break;
@@ -96,14 +80,12 @@ function changeUi(p1, p2, id) {
 function savaButtonHandler(element) {
   const pId = element.parentElement.parentElement.id;
   if (pId === "p1") {
-    player1ChangeTurn = true;
-    player2ChangeTurn = false;
     p1Ttl += _p1CurScore;
     p1TtlScore.textContent = p1Ttl;
     if (_p1CurScore === 0) {
       return;
     } else {
-      changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+      changeUi((player1ChangeTurn = true), (player2ChangeTurn = false), pId);
     }
     p1CurScore.textContent = 0;
     _p1CurScore = 0;
@@ -111,14 +93,12 @@ function savaButtonHandler(element) {
       showTheWinner("بازیکن اول");
     }
   } else {
-    player1ChangeTurn = false;
-    player2ChangeTurn = true;
     p2Ttl += _p2CurScore;
     p2TtlScore.textContent = p2Ttl;
     if (_p2CurScore === 0) {
       return;
     } else {
-      changeUi(player1ChangeTurn, player2ChangeTurn, pId);
+      changeUi((player1ChangeTurn = false), (player2ChangeTurn = true), pId);
     }
     p2CurScore.textContent = 0;
     _p2CurScore = 0;
