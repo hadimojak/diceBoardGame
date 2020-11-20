@@ -28,23 +28,21 @@ function changeDicePic(roll) {
 function diceButtonHandler(element) {
   const pId = element.parentElement.id;
   const roll = parseInt(Math.floor(Math.random() * 6) + 1);
-  console.log(pId, roll ,'   from diceHandler');
+  console.log(pId, roll, "   from diceHandler");
   if (pId === "p1") {
+    p1DicePic.src = changeDicePic(roll);
     if (roll === 1) {
-      p1DicePic.src = changeDicePic(roll);
       changeUi((player1ChangeTurn = true), (player2ChangeTurn = false), pId);
     } else {
-      p1DicePic.src = changeDicePic(roll);
       changeUi((player1ChangeTurn = false), (player2ChangeTurn = true), pId);
       _p1CurScore += roll;
       p1CurScore.textContent = _p1CurScore;
     }
   } else if (pId === "p2") {
+    p2DicePic.src = changeDicePic(roll);
     if (roll === 1) {
-      p2DicePic.src = `/dicePictures/Dice-1-b.svg`;
       changeUi((player1ChangeTurn = false), (player2ChangeTurn = true), pId);
     } else {
-      p2DicePic.src = `/dicePictures/Dice-${roll}-b.svg`;
       changeUi((player1ChangeTurn = true), (player2ChangeTurn = false), pId);
       _p2CurScore += roll;
       p2CurScore.textContent = _p2CurScore;
@@ -53,16 +51,16 @@ function diceButtonHandler(element) {
 }
 
 function changeUi(p1, p2, id) {
-  console.log(id,'   this is from changeUi');
+  console.log(id, "   this is from changeUi");
   flag = true;
   switch (flag) {
     case p1 && !p2:
-      changeTurn("p1", "p2");
+      changeTrunUi("p1", "p2");
       p1CurScore.textContent = 0;
       _p1CurScore = 0;
       break;
     case p2 && !p1:
-      changeTurn("p2", "p1");
+      changeTrunUi("p2", "p1");
       p2CurScore.textContent = 0;
       _p2CurScore = 0;
       break;
@@ -71,7 +69,7 @@ function changeUi(p1, p2, id) {
   }
 }
 
-function changeTurn(p1, p2) {
+function changeTrunUi(p1, p2) {
   document.getElementById(p1).querySelectorAll("button")[1].style =
     "display:none;";
   document.getElementById(p2).querySelectorAll("button")[1].style =
@@ -92,6 +90,7 @@ function savaButtonHandler(element) {
     }
     p1CurScore.textContent = 0;
     _p1CurScore = 0;
+    p1DicePic.src = changeDicePic("7");
     if (p1Ttl >= 100) {
       showTheWinner("بازیکن اول");
     }
@@ -105,12 +104,13 @@ function savaButtonHandler(element) {
     }
     p2CurScore.textContent = 0;
     _p2CurScore = 0;
+    p2DicePic.src = changeDicePic("7");
+
     if (p2Ttl >= 100) {
       showTheWinner("بازیکن دوم");
     }
   }
 }
-
 function showTheWinner(player) {
   alert(`winner is player : ${player}`);
 }
