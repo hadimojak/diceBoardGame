@@ -52,8 +52,7 @@ function diceButtonHandler(element) {
 
 function changeUi(p1, p2, id) {
   console.log(id, "   this is from changeUi");
-  flag = true;
-  switch (flag) {
+  switch ((flag = true)) {
     case p1 && !p2:
       changeTrunUi("p1", "p2");
       p1CurScore.textContent = 0;
