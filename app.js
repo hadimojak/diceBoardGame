@@ -12,7 +12,6 @@ let p1Ttl = 0;
 let p2Ttl = 0;
 let player1ChangeTurn = false;
 let player2ChangeTurn = false;
-
 window.addEventListener("click", (event) => {
   if (event.target.className === "diceButton") {
     diceButtonHandler(event.target);
@@ -20,11 +19,9 @@ window.addEventListener("click", (event) => {
     savaButtonHandler(event.target);
   }
 });
-
 function changeDicePic(roll) {
   return `/dicePictures/Dice-${roll}-b.svg`;
 }
-
 function diceButtonHandler(element) {
   const pId = element.parentElement.id;
   const roll = parseInt(Math.floor(Math.random() * 6) + 1);
@@ -49,7 +46,6 @@ function diceButtonHandler(element) {
     }
   }
 }
-
 function changeUi(p1, p2, id) {
   console.log(id, "   this is from changeUi");
   switch ((flag = true)) {
@@ -67,7 +63,6 @@ function changeUi(p1, p2, id) {
       break;
   }
 }
-
 function changeTrunUi(p1, p2) {
   document.getElementById(p1).querySelectorAll("button")[1].style =
     "display:none;";
@@ -76,7 +71,6 @@ function changeTrunUi(p1, p2) {
   document.getElementById(p1).style.borderColor = "white";
   document.getElementById(p2).style.borderColor = "red";
 }
-
 function savaButtonHandler(element) {
   const pId = element.parentElement.parentElement.id;
   if (pId === "p1") {
