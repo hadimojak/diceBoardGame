@@ -12,7 +12,7 @@ let p1Ttl = 0;
 let p2Ttl = 0;
 let player1ChangeTurn = false;
 let player2ChangeTurn = false;
-window.addEventListener("click", (event) => {
+document.getElementById("row1").addEventListener("click", (event) => {
   if (event.target.className === "diceButton") {
     diceButtonHandler(event.target);
   } else if (event.target.className === "saveButton") {
@@ -22,7 +22,7 @@ window.addEventListener("click", (event) => {
 function diceButtonHandler(element) {
   const pId = element.parentElement.id;
   const roll = parseInt(Math.floor(Math.random() * 6) + 1);
-  console.log(pId, roll, "   from diceHandler");
+  // console.log(pId, roll, "   from diceHandler");
   if (pId === "p1") {
     p1DicePic.src = `/dicePictures/Dice-${roll}-b.svg`;
     if (roll === 1) {
